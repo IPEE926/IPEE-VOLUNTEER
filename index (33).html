@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join IPEE as a Volunteer</title>
+<style>
+:root{--navy:#1F4E79;--teal:#1A9E8F;--gold:#F2B705;--ink:#1b1b1b;--bg:#f2f5f8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);padding:20px}
+.wrap{max-width:460px;margin:0 auto}
+h1{font-size:22px;margin:0 0 6px;color:var(--navy)}
+p.sub{margin:0 0 14px;font-size:15px;color:#444;line-height:1.5}
+.bar{height:6px;background:#dbe3ea;border-radius:4px;margin:14px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;width:33%;background:var(--teal);transition:width .3s}
+.stepno{font-size:13px;color:#555;margin-bottom:6px}
+label{display:block;font-size:14px;font-weight:bold;margin:16px 0 2px}
+.hint{font-size:12.5px;color:#666;margin:0 0 5px}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{width:100%;padding:12px;font-size:16px;border:1px solid #c5ced6;border-radius:8px;font-family:inherit;background:#fff}
+input:focus,textarea:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+textarea{min-height:64px}
+.step{display:none}.step.on{display:block}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin-top:18px;line-height:1.45}
+.chk input{margin-top:4px;width:18px;height:18px}
+.btns{display:flex;gap:10px;margin-top:22px}
+button{flex:1;padding:14px;font-size:16px;font-weight:bold;color:#fff;background:var(--teal);border:0;border-radius:8px;cursor:pointer}
+button.back{background:#fff;color:var(--navy);border:1px solid #c5ced6;flex:0 0 90px}
+button:disabled{opacity:.6;cursor:wait}
+#msg{margin-top:12px;font-size:14px;color:#b3261e;min-height:20px}
+#done{display:none;text-align:center}
+.stage{display:flex;justify-content:center;margin:20px 0}
+#badge{width:320px;height:490px;background:#fff;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 4px 18px rgba(0,0,0,.18);text-align:center}
+.slot{position:absolute;top:10px;left:50%;width:56px;height:10px;margin-left:-28px;border-radius:6px;background:rgba(255,255,255,.35)}
+.head{background:var(--navy);color:#fff;padding:30px 16px 16px}
+.head .org{font-size:11px;letter-spacing:1.4px;font-weight:bold;line-height:1.4}
+.ribbon{background:var(--gold);color:#1b1b1b;font-weight:bold;letter-spacing:4px;font-size:15px;padding:7px 0}
+.photo{width:150px;height:150px;border-radius:50%;margin:22px auto 14px;border:6px solid var(--teal);background:#dfe7ee;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.photo img{width:100%;height:100%;object-fit:cover}
+.name{font-size:24px;font-weight:bold;color:var(--navy);padding:0 14px;line-height:1.2}
+.role{font-size:15px;margin-top:6px;color:#333;padding:0 14px}
+.num{display:inline-block;margin-top:16px;padding:8px 18px;border:2px solid var(--teal);border-radius:8px;font-size:18px;font-weight:bold;letter-spacing:1px;color:var(--teal)}
+.foot{position:absolute;left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:11px 10px;font-size:11px;line-height:1.5}
+.foot b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div id="formView">
+  <h1>Welcome to IPEE! 👋</h1>
+  <p class="sub">Thank you for giving your time to make the human experience enjoyable. This takes about 3 minutes.</p>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="stepno" id="stepno">Step 1 of 3: About you</div>
+
+  <div class="step on" id="s1">
+    <label for="name">Your full name</label>
+    <p class="hint">Write it exactly as you want it on your badge and your volunteer certificate.</p>
+    <input type="text" id="name" autocomplete="name">
+
+    <label for="wa">Your WhatsApp number</label>
+    <p class="hint">We will use it to keep in touch.</p>
+    <input type="tel" id="wa" autocomplete="tel">
+
+    <label for="email">Your email</label>
+    <input type="email" id="email" autocomplete="email">
+
+    <label for="addr">Where do you live?</label>
+    <p class="hint">Area, city and state is enough.</p>
+    <input type="text" id="addr" autocomplete="street-address">
+
+    <label for="dob">Your date of birth</label>
+    <p class="hint">So we can celebrate you on your birthday! 🎂</p>
+    <input type="date" id="dob">
+
+    <label for="role">Your volunteer role</label>
+    <p class="hint">Leave it as Volunteer, or type the role you were given.</p>
+    <input type="text" id="role" value="Volunteer">
+  </div>
+
+  <div class="step" id="s2">
+    <p class="sub">A guarantor is someone who knows you well and can vouch for you. A family member, a friend or a colleague is fine.</p>
+    <label for="gname">Guarantor&rsquo;s full name</label>
+    <input type="text" id="gname">
+    <label for="gphone">Guarantor&rsquo;s phone number</label>
+    <input type="tel" id="gphone">
+    <label for="grel">How do you know each other?</label>
+    <p class="hint">For example: sister, friend, colleague.</p>
+    <input type="text" id="grel">
+  </div>
+
+  <div class="step" id="s3">
+    <label for="photo">Your photo</label>
+    <p class="hint">A clear photo of your face, taken with your phone, is perfect. Plain background if possible.</p>
+    <input type="file" id="photo" accept="image/*">
+    <div class="chk">
+      <input type="checkbox" id="consent">
+      <label for="consent" style="font-weight:normal;margin:0;font-size:14px">My name is spelled correctly and my details are true. IPEE may use my name and photo on its pages and posts.</label>
+    </div>
+  </div>
+
+  <div class="btns">
+    <button class="back" id="back" style="display:none">Back</button>
+    <button id="next">Next</button>
+  </div>
+  <div id="msg"></div>
+</div>
+
+<div id="done">
+  <h1>Welcome to the IPEE family! 🎉</h1>
+  <p class="sub">Your details are saved. Here is your volunteer badge. Together we make an impact.</p>
+  <div class="stage">
+    <div id="badge">
+      <div class="head"><div class="slot"></div>
+        <div class="org">INSTITUTE FOR<br>PATIENT EXPERIENCE EXCELLENCE</div></div>
+      <div class="ribbon">VOLUNTEER</div>
+      <div class="photo" id="pbox"></div>
+      <div class="name" id="oName"></div>
+      <div class="role" id="oRole"></div>
+      <div class="num" id="oNum"></div>
+      <div class="foot"><b>#DesignedNotByChance</b><br>www.institutepee.org</div>
+    </div>
+  </div>
+  <button id="dl" style="width:100%">Download my badge (PNG)</button>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxvWXdwrmKU5pV0kRPuRr9XBy1ko18LTg4d8Lh9MjzNJxvc73LYkSKTbtcSM-iRBzSp2w/exec";
+
+var $ = function(id){return document.getElementById(id)};
+var val = function(id){return $(id).value.trim()};
+var photoData = "", cur = 1;
+var titles = ["", "About you", "Your guarantor", "Your photo"];
+var checks = {
+  1: [["name","your full name"],["wa","your WhatsApp number"],["email","your email"],["addr","where you live"],["dob","your date of birth"],["role","your volunteer role"]],
+  2: [["gname","your guarantor\u2019s name"],["gphone","your guarantor\u2019s phone number"],["grel","how you know your guarantor"]]
+};
+
+function show(n){
+  cur = n;
+  for (var i = 1; i <= 3; i++) $("s"+i).className = "step" + (i === n ? " on" : "");
+  $("bar").style.width = (n * 33.4) + "%";
+  $("stepno").textContent = "Step " + n + " of 3: " + titles[n];
+  $("back").style.display = n > 1 ? "block" : "none";
+  $("next").textContent = n === 3 ? "Submit and get my badge" : "Next";
+  $("msg").textContent = "";
+  window.scrollTo(0, 0);
+}
+
+function stepOk(n){
+  var list = checks[n] || [];
+  for (var i = 0; i < list.length; i++) {
+    if (!val(list[i][0])) { $("msg").textContent = "Almost there! Please add " + list[i][1] + "."; $(list[i][0]).focus(); return false; }
+  }
+  if (n === 3) {
+    if (!photoData) { $("msg").textContent = "Almost there! Please add your photo."; return false; }
+    if (!$("consent").checked) { $("msg").textContent = "One last thing: please tick the box to confirm."; return false; }
+  }
+  return true;
+}
+
+$("back").addEventListener("click", function(){ show(cur - 1); });
+$("next").addEventListener("click", function(){
+  if (!stepOk(cur)) return;
+  if (cur < 3) { show(cur + 1); return; }
+  submit();
+});
+
+// Shrink the photo so it uploads fast (max 500px, JPEG)
+$("photo").addEventListener("change", function(e){
+  var f = e.target.files[0]; if (!f) return;
+  var r = new FileReader();
+  r.onload = function(){
+    var img = new Image();
+    img.onload = function(){
+      var s = Math.min(1, 500 / Math.max(img.width, img.height));
+      var c = document.createElement("canvas");
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      photoData = c.toDataURL("image/jpeg", 0.85);
+    };
+    img.src = r.result;
+  };
+  r.readAsDataURL(f);
+});
+
+function submit(){
+  var btn = $("next"); btn.disabled = true; btn.textContent = "Saving...";
+  var payload = {
+    name: val("name"), whatsapp: val("wa"), email: val("email"), address: val("addr"),
+    dob: val("dob"), joined: new Date().toISOString().slice(0,10), role: val("role"),
+    gname: val("gname"), gphone: val("gphone"), grel: val("grel"),
+    consent: "Yes", photo: photoData
+  };
+  fetch(SCRIPT_URL, { method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"}, body: JSON.stringify(payload) })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res.ok) throw new Error(res.error || "Save failed");
+      showBadge(payload, res.id);
+    })
+    .catch(function(){
+      $("msg").textContent = "Sorry, we could not save your details. Please try again in a moment.";
+      btn.disabled = false; btn.textContent = "Submit and get my badge";
+    });
+}
+
+function showBadge(p, id){
+  $("oName").textContent = p.name;
+  $("oRole").textContent = p.role;
+  $("oNum").textContent = id;
+  $("pbox").innerHTML = '<img src="' + p.photo + '" alt="">';
+  $("formView").style.display = "none";
+  $("done").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+$("dl").addEventListener("click", function(){
+  html2canvas($("badge"), {scale:3, backgroundColor:null, useCORS:true}).then(function(c){
+    var a = document.createElement("a");
+    a.download = "IPEE-Volunteer-Badge-" + val("name").replace(/\s+/g,"-") + ".png";
+    a.href = c.toDataURL("image/png");
+    a.click();
+  });
+});
+</script>
+</body>
+</html>
